@@ -9,10 +9,12 @@ const Footer = () => {
         </div>
         <div className={styles.webmemes}>
             <h3>Contato</h3>
-            <ul>
-                <li>Email: felipecalixtoribas@gmail.com</li>
-                <li>Linkedin: felipecalixto03</li>
-            </ul>
+            <p>Email: felipecalixtoribas@gmail.com</p>
+            <p>Linkedin: felipecalixto03</p>
+        </div>
+        <div className={styles.webmemes}>
+          <h3>Sobre</h3>
+          <p>Este site foi criado para ser uma plataforma de divulgação de memes. E mostra um pouco do meu trabalho como desenvolvedor.</p>
         </div>
     </footer>
   )
