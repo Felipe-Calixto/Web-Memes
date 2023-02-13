@@ -1,5 +1,5 @@
-.navbar {
-    display: flex;
+.navbar_father {
+    width: 100%;
     position: sticky;
     top: 0;
     justify-content: space-between;
@@ -12,8 +12,19 @@
     backdrop-filter: blur(4px);
 }
 
+.navbar {
+    display: flex;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
 .logo_conteiner {
     display: flex;
+    margin-left: 8%;
 }
 
 .logo {
@@ -26,14 +37,13 @@
 }
 
 .img_logo {
-    height: 2.5rem;
-    margin-left: 5rem;
+    width: 2.5rem;
 }
 
 .nav_list {
     list-style: none;
     display: flex;
-    margin-right: 5rem;
+    margin-right: 8%;
 }
 
 .nav_list li {
@@ -59,9 +69,21 @@ a {
     font-weight: 500;
 }
 
+.responsive_dashboard {
+    display: none;
+    margin-right: 10%;
+    font-size: 18px;
+}
+
 @media only screen and (max-width: 600px) {
   .logo {
-    font-size: 2rem;
+    font-size: 1.4rem;
+  }
+  .nav_list {
+    display: none;
+  }
+  .responsive_dashboard {
+    display: block;
   }
 }
 

@@ -10,6 +10,7 @@ import About from './pages/About/About';
 //Components
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import Cadastrar from './pages/Cadastrar/Cadastrar';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home/>}/>  
             <Route path='/about' element={<About/>}/>  
+            <Route path='/cadastro' element={<Cadastrar/>}/>  
           </Routes>
         </div>
       <Footer/>
