@@ -7,3 +7,13 @@
   width: 100vw;
 }
 
+.loadingConteiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.loadingGif {
+  height: 50%;
+}

@@ -1,4 +1,6 @@
 import { async } from "@firebase/util";
+import { db } from "../firebase/config"
+
 import {
     getAuth,
     createUserWithEmailAndPassword,
@@ -8,6 +10,7 @@ import {
 } from "firebase/auth";
 
 import { useState, useEffect } from "react";
+import Swal from 'sweetalert2';
 
 export const useAthentication = () => {
 
@@ -27,7 +30,7 @@ export const useAthentication = () => {
         checkCancelled();
 
         setLoading(true);
-
+    
         try {
             
             const {user} = await createUserWithEmailAndPassword(
@@ -40,6 +43,18 @@ export const useAthentication = () => {
                 displayName: data.displayName
             })
 
+
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                width: '400',
+                title: 'Usuário cadastrado com sucesso.',
+                showConfirmButton: false,
+                timer: 1500
+              })  
+
+            setLoading(false);
+
             return user;
 
         } catch (error) {
@@ -47,21 +62,53 @@ export const useAthentication = () => {
             console.log(error.message);
             console.log(typeof error.message);
 
-            setLoading(false);
-
-            setCancelled(true);
-           
-            return {
-                auth,
-                createUser,
-                error,
-                loading
+            if (error.message.includes("Password")) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    width: '400',
+                    title: 'A senha precisa conter pelo menos 6 caracteres.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            } else if (error.message.includes("email-already")) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    width: '400',
+                    title: 'Email já cadastrado.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })  
+            } else {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    width: '400',
+                    title: 'Ocorreu um erro, por favor tente mais tarde.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })    
             }
+
+            setLoading(false);
         }
 
+        
     }
 
+    useEffect(() => {
+    
+        return () => setCancelled(true);
+    }, [])
+    
 
+    return {
+        auth,
+        createUser,
+        error,
+        loading
+    }
 
 
 }

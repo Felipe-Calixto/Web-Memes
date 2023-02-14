@@ -7,6 +7,9 @@ import { useState } from "react";
 import { FaList } from 'react-icons/fa';
 import ResponsiveNavBar from "./ResponsiveNavBar";
 
+import { useAthentication } from "../hooks/useAuthentication";
+
+import { useAuthValue } from "../Context/AuthContext";
 
 const NavBar = () => {
 
@@ -16,7 +19,9 @@ const NavBar = () => {
         
         setState(!state);
     }
-    console.log(state)
+
+    const user = useAuthValue();
+    
     return (
    <nav className={styles.navbar_father}>
     <div className={styles.navbar}>
@@ -31,11 +36,18 @@ const NavBar = () => {
         <li>
             <NavLink to="/" className={({isActive}) => (isActive ? styles.active : "")}>Home</NavLink> 
         </li>
+        {!user && (
+        <>
         <li>
-            <NavLink to="/about" className={({isActive}) => (isActive ? styles.active : "")}>About</NavLink> 
+            <NavLink to="/login" className={({isActive}) => (isActive ? styles.active : "")}>Entrar</NavLink> 
         </li>
         <li>
             <NavLink to="/cadastro" className={({isActive}) => (isActive ? styles.active : "")}>Cadastro</NavLink> 
+        </li>
+        </>
+        )}
+        <li>
+            <NavLink to="/about" className={({isActive}) => (isActive ? styles.active : "")}>About</NavLink> 
         </li>
     </ul>
     </div>

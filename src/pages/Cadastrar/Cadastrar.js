@@ -8,7 +8,8 @@ import { FaUser } from "react-icons/fa";
 import { FaLock } from "react-icons/fa";
 import { FaRegEnvelope } from "react-icons/fa";
 
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import { Await } from "react-router-dom";
 
 const Cadastrar = () => {
 
@@ -17,9 +18,9 @@ const Cadastrar = () => {
     const [password, setPassword] = useState("");    
     const [confirmPassword, setConfirmPassword] = useState("");    
     
-    const {createUser, error: authError, loading} = useAthentication
+    const {createUser, error: authError, loading} = useAthentication();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const user = {
@@ -39,8 +40,9 @@ const Cadastrar = () => {
               })
             return
         }
-        
-    }
+      
+        const res = await createUser(user);
+    };
 
   return (
     <div className={styles.cadastro_conteiner}>
@@ -54,7 +56,8 @@ const Cadastrar = () => {
             <input type="password" required placeholder="Senha" className={styles.input_form} value={password} onChange={(e) => setPassword(e.target.value)}/>
             <label htmlFor="" className={styles.icon_lock}><FaLock/></label>
             <input type="password" required placeholder="Confirmar Senha" className={styles.input_form} value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}/>
-            <button className={styles.bnt}>Cadastrar</button>
+            {!loading && <button className={styles.bnt}>Cadastrar</button>}
+            {loading && <button className={styles.bnt} disabled>Aguarde...</button>}
         </form>
     </div>
   )
