@@ -9,7 +9,11 @@ import ResponsiveNavBar from "./ResponsiveNavBar";
 
 import { useAthentication } from "../hooks/useAuthentication";
 
+
 import { useAuthValue } from "../Context/AuthContext";
+import { createUserWithEmailAndPassword, signOut } from "firebase/auth";
+
+import Swal from 'sweetalert2'
 
 const NavBar = () => {
 
@@ -20,8 +24,25 @@ const NavBar = () => {
         setState(!state);
     }
 
-    const user = useAuthValue();
-    
+    const { user } = useAuthValue();
+    const { logout } = useAthentication();
+
+    const customAlert = () => {
+        Swal.fire({
+            title: 'Deseja mesmo sair?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Cancelar',
+            confirmButtonText: 'Sim'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                logout();
+            }
+        })
+    }
+
     return (
    <nav className={styles.navbar_father}>
     <div className={styles.navbar}>
@@ -46,9 +67,21 @@ const NavBar = () => {
         </li>
         </>
         )}
-        <li>
-            <NavLink to="/about" className={({isActive}) => (isActive ? styles.active : "")}>About</NavLink> 
-        </li>
+        {user && (
+          <>
+          <li>
+              <NavLink to="/posts/create" className={({isActive}) => (isActive ? styles.active : "")}>Criar Post</NavLink> 
+          </li>
+          <li>
+              <NavLink to="/dashboard" className={({isActive}) => (isActive ? styles.active : "")}>Dashboard</NavLink> 
+          </li>
+          </>  
+        )}
+        {user && (
+            <li>
+                <NavLink onClick={customAlert}>Sair</NavLink>
+            </li>
+        ) }
     </ul>
     </div>
     <div>

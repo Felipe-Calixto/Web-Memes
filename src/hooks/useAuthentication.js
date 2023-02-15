@@ -6,7 +6,7 @@ import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
     updateProfile,
-    singOut
+    signOut
 } from "firebase/auth";
 
 import { useState, useEffect } from "react";
@@ -97,6 +97,58 @@ export const useAthentication = () => {
         
     }
 
+    const logout = async () => {
+
+        checkCancelled();
+        
+        await signOut(auth)
+    }
+
+    const login = async(data) => {
+
+        checkCancelled();
+        setLoading(true);
+
+        try {
+
+            await signInWithEmailAndPassword(auth, data.email, data.password);
+
+            setLoading(false);
+        } catch (error) {
+            
+            if (error.message.includes("user-not-found")) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    width: '400',
+                    title: 'Usuário não encontrado.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+            } else if (error.message.includes("wrong-password")) {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    width: '400',
+                    title: 'Senha incorreta.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })  
+            } else {
+                Swal.fire({
+                    position: 'center',
+                    icon: 'error',
+                    width: '400',
+                    title: 'Ocorreu um erro, por favor tente mais tarde.',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })    
+            }
+
+            setLoading(false);
+        }
+    }
+
     useEffect(() => {
     
         return () => setCancelled(true);
@@ -107,7 +159,9 @@ export const useAthentication = () => {
         auth,
         createUser,
         error,
-        loading
+        loading,
+        logout,
+        login
     }
 
 
