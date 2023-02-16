@@ -1,9 +1,12 @@
-import styles from "./Home.css";
+import { AiOutlineSearch } from 'react-icons/ai';
 
 const Home = () => {
   return (
     <div>
-        <h1>Home</h1>
+        <form>
+          <input type="text"/>
+          <button><AiOutlineSearch/></button>
+        </form>
     </div>
   )
 }

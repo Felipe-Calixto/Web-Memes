@@ -42,12 +42,23 @@
     font-size: 20px;
 }
 
-.img {
+.imgConteiner {
     display: flex;
     justify-content: center;
+    align-items: center;
     border: 2px dashed grey;
     width: 17rem;
     height: 17rem;
+}
+
+.imgConteiner p {
+    font-size: 50px;
+    color: grey;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
 }
 
 @media only screen and (max-width: 600px) {
