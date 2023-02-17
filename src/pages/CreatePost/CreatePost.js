@@ -66,7 +66,7 @@ const CreatePost = () => {
           {checkImg ? <img src={image} className={styles.img}/> : <p><AiOutlineFileImage/></p>}
         </div>
         <form className={styles.form} onSubmit={handleSubmit}>
-          <h1>Nova Puplicação</h1>
+          <h1>Nova Publicação</h1>
           <label className={styles.iconUrl}>URL</label>
           <input type="url" className={styles.input} placeholder="| Digite o url da imagem" required onChange={(e) => setImage(e.target.value)}/>
           <label className={styles.iconText}><ImTextWidth/></label>
