@@ -25,6 +25,7 @@ import { useAthentication } from './hooks/useAuthentication';
 
 //Img
 import loadingGif from './img/loading.gif'
+import Search from './pages/Search/Search';
 
 
 function App() {
@@ -41,7 +42,6 @@ function App() {
     })
   }, [auth])
   
-  console.log(user)
   if (loadingUser) {
    return <div className="loadingConteiner"><img src={loadingGif} className="loadingGif"/></div>
   }
@@ -60,6 +60,7 @@ function App() {
                 <Route path='/about' element={<About/>}/>  
                 <Route path='/posts/create' element={user ? <CreatePost/> : <Navigate to="/login"/>}/>
                 <Route path="/dashboard" element={user ? <Dashboard/> : <Navigate to="/login"/>}/>
+                <Route path='/search' element={<Search/>}/>
               </Routes>
             </div>
           <Footer/>

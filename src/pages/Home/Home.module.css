@@ -16,7 +16,7 @@
 }
 
 .form input {
-    width: 40%;
+    width: 35%;
     padding: .5rem;
     border: 2px solid grey;
     border-right: none;
@@ -28,7 +28,7 @@
 
 .form button {
     border-radius: .2rem;
-    padding: .3rem .5rem;
+    padding: .3rem 1rem;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     display: flex;
@@ -36,6 +36,12 @@
     align-items: center;
     font-size: 20px;
     margin-top: 1rem;
+    background-color: grey;
+    color: white;
+}
+.form button:hover {
+    color: grey;
+    background-color: rgb(240, 240, 240);
 }
 
 .postsConteiner {
@@ -67,7 +73,7 @@
 
 @media only screen and (max-width: 600px) {
     .form input {
-        width: 80%;
+        width: 70%;
     }
     .postsConteiner {
         grid-template-columns: repeat(1, 20.2rem); 

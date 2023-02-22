@@ -21,7 +21,9 @@ const Home = () => {
 
     e.preventDefault();
 
-
+    if (query) {
+      navigate(`/search?q=${query}`)
+    }
   }
 
 
