@@ -23,24 +23,13 @@ const Search = () => {
     return (
         <div className={styles.conteiner}>
             <div className={styles.postsConteiner}>
-                {posts && posts.length === 0 && (
-                    <>
-                    <div className={styles.returnHome}>
-                        <p>Não foram encontradas publicações</p>
-                        <button onClick={navigateToHome}>Voltar para Home</button>
-                    </div>
-                    </>
-                )}
                 {posts && posts.map((post) => (
                     <PostDetail key={post.id} post={post}/>
                 ))}
-                {posts && (
-                    <>
-                        <div>
-                            <button>Voltar</button>
-                        </div>
-                    </>
-                )}
+            </div>
+            <div className={styles.returnHome}>
+                <p>Não foram encontradas publicações</p>
+                <button onClick={navigateToHome}>Voltar para Home</button>
             </div>
         </div>
     )

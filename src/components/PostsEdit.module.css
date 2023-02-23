@@ -1,0 +1,66 @@
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid grey;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 2rem;
+}
+
+.conteiner input {
+    border: 1px solid grey;
+}
+
+.img {
+    width: 16rem;
+    height: 16rem;
+    box-shadow: 0px 5px 14px 1px rgba(150,150,150,0.8);
+    -webkit-box-shadow: 0px 5px 14px 1px rgba(150,150,150,0.8);
+    -moz-box-shadow: 0px 5px 14px 1px rgba(150,150,150,0.8);
+}
+
+.text {
+    font-weight: 500;
+}
+
+.iconPen1 {
+    color: grey;
+    position: absolute;
+    margin-top: 10.8rem;
+    margin-left: .5rem;
+}
+
+.iconPen2 {
+    color: grey;
+    position: absolute;
+    margin-top: 17.5rem;
+    margin-left: .5rem;
+}
+
+.bntConteiner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bntConteiner button {
+    margin-right: .1rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .postsConteiner {
+        grid-template-columns: repeat(1, 22rem); 
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .img {
+        width: 16rem;
+        height: 16rem;
+    }
+    .postsConteiner {
+        grid-template-columns: repeat(1, 20.2rem); 
+    }
+
+  }

@@ -1,0 +1,38 @@
+.conteiner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.conteiner h2 {
+    font-size: 40px;
+    margin-bottom: 0;
+}
+
+.description {
+    color: grey;
+    font-weight: 500;
+}
+
+.postsConteiner {
+    display: grid;
+    grid-template-columns: repeat(2, 20.2rem);
+    column-gap: 2rem;
+}
+
+@media only screen and (max-width: 800px) {
+    .postsConteiner {
+        grid-template-columns: repeat(1, 22rem); 
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .postsConteiner {
+        grid-template-columns: repeat(1, 20.2rem); 
+    }
+
+  }
+
+  
