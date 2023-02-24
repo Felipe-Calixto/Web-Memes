@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
         <div className={styles.webmemes}>
           <h3>Sobre</h3>
-          <p>Este site foi criado para ser uma plataforma de divulgação de memes. E mostra um pouco do meu trabalho como desenvolvedor.</p>
+          <p>Este site foi criado para ser uma plataforma de divulgação de memes. E mostrar um pouco do meu trabalho como desenvolvedor.</p>
         </div>
     </footer>
   )
